@@ -1,0 +1,1145 @@
+/* ==UserStyle==
+@name Reddit Gruvbox
+@namespace github.com/JuliaAllen1/styles
+@version 1.0.0
+@description Pastel 'retro groove' color theme for Reddit
+@author JuliaAllen1
+@license GPL3
+
+Initially based on Catppuccin Reddit
+@preprocessor less
+@var select lightFlavor "Light Mode" ["latte:Latte*", "frappe:Frappé"]
+@var select darkFlavor "Dark Flavor" ["macchiato:Macchiato", "mocha:Mocha*"]
+@var select accentColor "Accent" ["rosewater:Rosewater", "flamingo:Flamingo", "purple:purple", "purple0:purple0*", "red:Red", "maroon:Maroon", "peach:Peach", "yellow:Yellow", "green:Green", "teal:Teal", "blue:blue", "blue0:blue0", "sky:Sky", "lavender:Lavender", "fg2:Gray"]
+==/UserStyle== */
+
+@-moz-document domain("reddit.com") {
+  :root:not(.theme-dark) .theme-rpl,
+  :root:not(.theme-dark).theme-rpl,
+  :root:not(.theme-dark) .theme-beta,
+  :root:not(.theme-dark).theme-beta,
+  .theme-light {
+    #catppuccin(@lightFlavor, @accentColor);
+  }
+
+  :root:not(.theme-light) .theme-rpl,
+  :root:not(.theme-light).theme-rpl,
+  :root:not(.theme-light) .theme-beta,
+  :root:not(.theme-light).theme-beta,
+  .theme-dark {
+    #catppuccin(@darkFlavor, @accentColor);
+  }
+
+  #catppuccin(@lookup, @accent) {
+    @rosewater: @catppuccin[@@lookup][@rosewater];
+    @flamingo: @catppuccin[@@lookup][@flamingo];
+    @purple: @catppuccin[@@lookup][@purple];
+    @purple0: @catppuccin[@@lookup][@purple0];
+    @red: @catppuccin[@@lookup][@red];
+    @maroon: @catppuccin[@@lookup][@maroon];
+    @peach: @catppuccin[@@lookup][@peach];
+    @yellow: @catppuccin[@@lookup][@yellow];
+    @green: @catppuccin[@@lookup][@green];
+    @teal: @catppuccin[@@lookup][@teal];
+    @sky: @catppuccin[@@lookup][@sky];
+    @blue0: @catppuccin[@@lookup][@blue0];
+    @blue: @catppuccin[@@lookup][@blue];
+    @lavender: @catppuccin[@@lookup][@lavender];
+    @fg: @catppuccin[@@lookup][@fg];
+    @fg2: @catppuccin[@@lookup][@fg2];
+    @fg3: @catppuccin[@@lookup][@fg3];
+    @fg4: @catppuccin[@@lookup][@fg4];
+    @bg3: @catppuccin[@@lookup][@bg3];
+    @bg2: @catppuccin[@@lookup][@bg2];
+    @bg1: @catppuccin[@@lookup][@bg1];
+    @bg: @catppuccin[@@lookup][@bg];
+    @bg0_h: @catppuccin[@@lookup][@bg0_h];
+    @black: @catppuccin[@@lookup][@black];
+    @accent-color: @catppuccin[@@lookup][@@accent];
+
+    color-scheme: if(@lookup = latte, light, dark);
+
+    ::selection {
+      background-color: fade(@accent-color, 30%);
+    }
+
+    input,
+    textarea {
+      &::placeholder {
+        color: @fg2 !important;
+      }
+    }
+
+    /* BETA */
+    --color-pizzaRed: @red !important;
+    --color-global-brand-orangered: @peach !important;
+    --color-global-focus: @bg2 !important;
+    --color-interactive-content-disabled: @fg2 !important;
+    --color-interactive-background-disabled: fade(@bg3, 70%) !important;
+    --color-interactive-pressed: @bg3 !important;
+    --color-neutral-content: @fg !important;
+    --color-neutral-content-disabled: @fg2 !important;
+    --color-neutral-content-weak: @fg2 !important;
+    --color-neutral-content-strong: @fg !important;
+    --color-global-white: @black !important;
+    --color-neutral-background: @bg !important;
+    --color-neutral-background-selected: @bg1 !important;
+    --color-neutral-background-weak: @bg0_h !important;
+    --color-neutral-background-medium: @bg !important;
+    --color-neutral-background-strong: @black !important;
+    --color-neutral-background-hover: @bg1 !important;
+    --color-neutral-border: @bg1 !important;
+    --color-neutral-border-medium: @bg1 !important;
+    --color-neutral-border-weak: @bg1 !important;
+    --color-neutral-border-strong: @bg3 !important;
+    --color-primary: @accent-color !important;
+    --color-primary-hover: lighten(@accent-color, 10%) !important;
+    --color-primary-visited: @lavender !important;
+    --color-primary-background: @accent-color !important;
+    --color-primary-background-hover: darken(@accent-color, 5%) !important;
+    --color-primary-background-selected: darken(@accent-color, 5%) !important;
+    --color-primary-onBackground: @bg !important;
+    --color-primary-onBackground-selected: @black !important;
+    --color-secondary: @fg2 !important;
+    --color-secondary-hover: @fg2 !important;
+    --color-secondary-weak: @fg2 !important;
+    --color-secondary-onBackground: @fg !important;
+    --color-secondary-background: @bg0_h !important;
+    --color-secondary-background-hover: @bg2 !important;
+    --color-secondary-background-selected: @bg2 !important;
+    --color-secondary-plain: @fg2 !important;
+    --color-secondary-plain-hover: @fg2 !important;
+    --color-danger-background: @red !important;
+    --color-danger-background-disabled: fadeout(@red, 80%) !important;
+    --color-danger-background-hover: fadeout(@red, 2%) !important;
+    --color-danger-onBackground: @fg !important;
+    --color-danger-content: @red !important;
+    --color-danger-content-default: @black;
+    --color-danger-content-hover: darken(@red, 2%) !important;
+    --color-success-content: @green !important;
+    --color-success-hover: darken(@green, 2%) !important;
+    --color-success-onBackground: @black;
+    --color-success-background: @green !important;
+    --color-success-background-hover: darken(@green, 2%) !important;
+    --color-warning-content: @yellow !important;
+    --color-warning-content-hover: darken(@yellow, 2%) !important;
+    --color-warning-onBackground: @bg !important;
+    --color-warning-background: @yellow !important;
+    --color-warning-background-hover: darken(@yellow, 2%) !important;
+    --color-upvote-content: @accent-color !important;
+    --color-upvote-disabled: @fg2 !important;
+    --color-upvote-onBackground: @fg !important;
+    --color-upvote-background: @bg !important;
+    --color-upvote-background-hover: darken(@accent-color, 5%) !important;
+    --color-upvote-background-disabled: @bg !important;
+    --color-downvote-content: @fg !important;
+    --color-downvote-content-weak: @fg !important;
+    --color-downvote-disabled: @fg2 !important;
+    --color-downvote-onBackground: @fg !important;
+    --color-downvote-background: @bg !important;
+    --color-downvote-background-hover: darken(@blue, 5%) !important;
+    --color-downvote-background-disabled: @bg0_h !important;
+    --color-tone-1: @fg !important;
+    --color-tone-2: @fg2 !important;
+    --color-tone-3: @fg2 !important;
+    --color-tone-4: @bg1 !important;
+    --color-tone-5: @bg2 !important;
+    --color-tone-6: @bg3 !important;
+    --color-tone-7: @bg !important;
+    --color-avatar-gradient: @accent-color !important;
+    --color-transparent-background-hover: fadeout(@bg1, 70%) !important;
+    --color-opacity-50: fadeout(@bg, 50%) !important;
+    --color-online: @accent-color !important;
+    --color-favorite: @accent-color !important;
+    --color-brand-background: @accent-color !important;
+    --color-brand-background-hover: darken(@accent-color, 5%) !important;
+    --color-brand-onBackground: @black !important;
+    --color-global-orangered: @accent-color !important;
+    --color-action-upvote: @accent-color !important;
+    --color-action-downvote: @blue;
+    --color-banner-error-text: @bg !important;
+
+    --shreddit-color-wordmark: @accent-color;
+    #reddit-logo {
+      circle[fill="#FF4500"] {
+        fill: @accent-color !important;
+      }
+      path[fill="#FFF"] {
+        fill: @black !important;
+      }
+    }
+
+    /* normal stuff */
+
+    &,
+    div[class^="subredditvars"] {
+      --color-online: @green !important;
+      --newCommunityTheme-actionIcon: @fg2 !important;
+      --newCommunityTheme-actionIconAlpha20: fadeout(@black, 20%) !important;
+      --newCommunityTheme-actionIconAlpha50: fadeout(@black, 20%) !important;
+      --newCommunityTheme-actionIconShaded80: @fg2 !important;
+      --newCommunityTheme-actionIconTinted80: @fg2 !important;
+      --newCommunityTheme-active: @accent-color !important;
+      --newCommunityTheme-activeAlpha10: fadeout(@black, 20%) !important;
+      --newCommunityTheme-activeAlpha20: fadeout(@black, 20%) !important;
+      --newCommunityTheme-activeAlpha50: fadeout(@black, 20%) !important;
+      --newCommunityTheme-activeLight60: @accent-color !important;
+      --newCommunityTheme-activeShaded80: @accent-color !important;
+      --newCommunityTheme-activeShaded90: @accent-color !important;
+      --newCommunityTheme-activeTinted05: @fg !important;
+      --newCommunityTheme-banner-backgroundColor: @accent-color !important;
+      --newCommunityTheme-banner-iconColor: @accent-color !important;
+      --newCommunityTheme-body: @bg0_h !important;
+      --newCommunityTheme-bodyAlpha50: @bg1 !important;
+      --newCommunityTheme-bodyAlpha70: @bg2 !important;
+      --newCommunityTheme-bodyAlpha80: @bg3 !important;
+      --newCommunityTheme-bodyFade: @fg2 !important;
+      --newCommunityTheme-bodyShaded80: @bg0_h !important;
+      --newCommunityTheme-bodyText: @fg !important;
+      --newCommunityTheme-bodyTextAlpha03: @bg0_h !important;
+      --newCommunityTheme-bodyTextAlpha20: @bg2 !important;
+      --newCommunityTheme-bodyTextShaded20: @bg1 !important;
+      --newCommunityTheme-bodyTextTinted20: @fg2 !important;
+      --newCommunityTheme-bodyTinted50: @fg3 !important;
+      --newCommunityTheme-bodyTinted80: @fg4 !important;
+      --newCommunityTheme-button: @fg !important;
+      --newCommunityTheme-buttonAlpha05: fadeout(@black, 20%) !important;
+      --newCommunityTheme-buttonAlpha10: fadeout(@black, 20%) !important;
+      --newCommunityTheme-buttonAlpha20: fadeout(@black, 20%) !important;
+      --newCommunityTheme-buttonAlpha40: @fg2 !important;
+      --newCommunityTheme-buttonAlpha50: @fg2 !important;
+      --newCommunityTheme-buttonAlpha80: @fg2 !important;
+      --newCommunityTheme-buttonShaded80: @fg4 !important;
+      --newCommunityTheme-buttonTinted20: @accent-color !important;
+      --newCommunityTheme-buttonTinted50: @accent-color !important;
+      --newCommunityTheme-buttonTinted80: @accent-color !important;
+      --newCommunityTheme-canvas: @black !important;
+      --newCommunityTheme-checkbox: @fg !important;
+      --newCommunityTheme-errorText: @red !important;
+      --newCommunityTheme-field: @bg1 !important;
+      --newCommunityTheme-fieldFade: fadeout(@bg2, 30%) !important;
+      --newCommunityTheme-flair: @accent-color !important;
+      --newCommunityTheme-highlight: @bg !important;
+      --newCommunityTheme-inactive: @fg2 !important;
+      --newCommunityTheme-lightText: @fg !important;
+      --newCommunityTheme-lightTextAlpha75: @fg2 !important;
+      --newCommunityTheme-line: fadeout(@bg2, 30%) !important;
+      --newCommunityTheme-lineShaded80: fadeout(@bg2, 30%) !important;
+      --newCommunityTheme-lineShaded90: fadeout(@bg2, 30%) !important;
+      --newCommunityTheme-lineShadedNinety: fadeout(@bg2, 30%) !important;
+      --newCommunityTheme-linkText: @accent-color !important;
+      --newCommunityTheme-linkTextAlpha80: @accent-color !important;
+      --newCommunityTheme-linkTextShaded80: @accent-color !important;
+      --newCommunityTheme-linkTextTinted80: @accent-color !important;
+      --newCommunityTheme-linkTextWithBody: @accent-color !important;
+      --newCommunityTheme-menu: @bg0_h !important;
+      --newCommunityTheme-menuActiveText: @fg !important;
+      --newCommunityTheme-menuButtonBackground-active: @bg !important;
+      --newCommunityTheme-menuButtonBackground-focus: @bg !important;
+      --newCommunityTheme-menuButtonBackground-hover: @bg !important;
+      --newCommunityTheme-menuInactiveText: @fg !important;
+      --newCommunityTheme-metaText: @fg2 !important;
+      --newCommunityTheme-metaTextAlpha50: @fg2 !important;
+      --newCommunityTheme-metaTextShaded80: @fg2 !important;
+      --newCommunityTheme-monospaceColor: @accent-color !important;
+      --newCommunityTheme-navBar-activeLink: @fg !important;
+      --newCommunityTheme-navBar-activeSubmenuCaret: @fg !important;
+      --newCommunityTheme-navBar-activeSubmenuLink: @fg !important;
+      --newCommunityTheme-navBar-backgroundColor: @bg0_h !important;
+      --newCommunityTheme-navBar-hoverLink: @fg !important;
+      --newCommunityTheme-navBar-inactiveLink: @fg !important;
+      --newCommunityTheme-navBar-inactiveSubmenuCaret: @fg !important;
+      --newCommunityTheme-navBar-inactiveSubmenuLink: @fg !important;
+      --newCommunityTheme-navBar-submenuBackgroundColor: @bg0_h !important;
+      --newCommunityTheme-navIcon: @fg !important;
+
+      /* upvote/downvote focus */
+      --newCommunityTheme-navIconFaded10: fadeout(@black, 20%) !important;
+
+      --newCommunityTheme-nsfw: @red !important;
+      --newCommunityTheme-nsfwBlocking-bgcolor: @black !important;
+      --newCommunityTheme-nsfwBlocking-color: @fg !important;
+      --newCommunityTheme-nsfwBlocking-contentTitleBgColor: @bg !important;
+      --newCommunityTheme-nsfwBlocking-mainCtaBgColor: @bg0_h !important;
+      --newCommunityTheme-pageHeader: @bg3 !important;
+      --newCommunityTheme-placeholder: @bg1 !important;
+      --newCommunityTheme-post: @bg0_h !important;
+      --newCommunityTheme-postError: @red !important;
+      --newCommunityTheme-postFlairText: @black !important;
+      --newCommunityTheme-postIcon: @accent-color !important;
+      --newCommunityTheme-postLine: fadeout(@bg2, 30%) !important;
+      --newCommunityTheme-postLineShaded80: fadeout(@bg2, 30%) !important;
+      --newCommunityTheme-postLineShaded90: fadeout(@bg2, 30%) !important;
+      --newCommunityTheme-postTinted20: @bg !important;
+      --newCommunityTheme-postTransparent20: @bg !important;
+      --newCommunityTheme-primaryButtonShadedEighty: @fg3 !important;
+      --newCommunityTheme-primaryButtonTintedEighty: @fg3 !important;
+      --newCommunityTheme-primaryButtonTintedFifty: @fg4 !important;
+      --newCommunityTheme-primaryButtonTintedSixty: @fg4 !important;
+      --newCommunityTheme-quarantine: @yellow !important;
+      --newCommunityTheme-report: @bg2 !important;
+      --newCommunityTheme-search-syntaxHighlightBackgroundColor: @accent-color !important;
+      --newCommunityTheme-search-syntaxHighlightColor: @bg !important;
+      --newCommunityTheme-titleText: @fg !important;
+      --newCommunityTheme-upsell-appleIcon: @fg2 !important;
+      --newCommunityTheme-upsell-ssoButtonBorderColor: fadeout(
+        @bg2,
+        30%
+      ) !important;
+      --newCommunityTheme-upsell-ssoButtonTextColor: @fg !important;
+      --newCommunityTheme-voteText-base: @fg2 !important;
+      --newCommunityTheme-voteText-downvote: @blue !important;
+      --newCommunityTheme-voteText-downvoteShaded80: @blue !important;
+      --newCommunityTheme-voteText-downvoteTinted80: @blue !important;
+      --newCommunityTheme-voteText-upvote: @red !important;
+      --newCommunityTheme-voteText-upvoteShaded80: @red !important;
+      --newCommunityTheme-voteText-upvoteTinted80: @red !important;
+      --newCommunityTheme-widgetColors-appleIcon: @fg4 !important;
+      --newCommunityTheme-widgetColors-lineColor: fadeout(
+        @bg2,
+        30%
+      ) !important;
+
+      /* sidebar widgets */
+      --newCommunityTheme-widgetColors-sidebarWidgetBackgroundColor: @bg0_h !important;
+      --newCommunityTheme-widgetColors-sidebarWidgetBorderColor: fadeout(
+        @bg2,
+        30%
+      ) !important;
+      --newCommunityTheme-widgetColors-sidebarWidgetHeaderColor: @black !important;
+      --newCommunityTheme-widgetColors-sidebarWidgetHeaderColorAlpha60: @bg0_h !important;
+      --newCommunityTheme-widgetColors-sidebarWidgetTextColor: @fg !important;
+      --newCommunityTheme-widgetColors-sidebarWidgetTextColorShaded80: @fg2 !important;
+      --newCommunityTheme-widgetColors-sidebarWidgetTitleColor: @fg !important;
+
+      --newRedditTheme-actionIcon: @fg2 !important;
+      --newRedditTheme-actionIconAlpha20: fadeout(@black, 20%) !important;
+      --newRedditTheme-actionIconAlpha50: fadeout(@black, 20%) !important;
+      --newRedditTheme-actionIconShaded80: @fg2 !important;
+      --newRedditTheme-actionIconTinted80: @fg2 !important;
+      --newRedditTheme-active: @accent-color !important;
+      --newRedditTheme-activeAlpha10: fadeout(@black, 20%) !important;
+      --newRedditTheme-activeAlpha20: fadeout(@black, 20%) !important;
+      --newRedditTheme-activeAlpha50: fadeout(@black, 20%) !important;
+      --newRedditTheme-activeLight60: @accent-color !important;
+      --newRedditTheme-activeShaded80: @accent-color !important;
+      --newRedditTheme-activeShaded90: @accent-color !important;
+      --newRedditTheme-activeTinted05: @fg !important;
+      --newRedditTheme-banner-backgroundColor: @accent-color !important;
+      --newRedditTheme-banner-iconColor: @accent-color !important;
+      --newRedditTheme-body: @bg0_h !important;
+      --newRedditTheme-bodyAlpha50: @bg1 !important;
+      --newRedditTheme-bodyAlpha70: @bg2 !important;
+      --newRedditTheme-bodyAlpha80: @bg3 !important;
+      --newRedditTheme-bodyFade: fadeout(@black, 20%) !important;
+      --newRedditTheme-bodyShaded80: @bg0_h !important;
+      --newRedditTheme-bodyText: @fg !important;
+      --newRedditTheme-bodyTextAlpha03: fadeout(@black, 20%) !important;
+      --newRedditTheme-bodyTextAlpha20: @bg2 !important;
+      --newRedditTheme-bodyTextShaded20: @bg1 !important;
+      --newRedditTheme-bodyTextTinted20: @fg2 !important;
+      --newRedditTheme-bodyTinted50: @fg4 !important;
+      --newRedditTheme-bodyTinted80: @fg3 !important;
+      --newRedditTheme-button: @fg !important;
+      --newRedditTheme-buttonAlpha05: fadeout(@black, 20%) !important;
+      --newRedditTheme-buttonAlpha10: fadeout(@black, 20%) !important;
+      --newRedditTheme-buttonAlpha20: fadeout(@black, 20%) !important;
+      --newRedditTheme-buttonAlpha40: @fg2 !important;
+      --newRedditTheme-buttonAlpha50: @fg2 !important;
+      --newRedditTheme-buttonAlpha80: @fg2 !important;
+      --newRedditTheme-buttonShaded80: @fg4 !important;
+      --newRedditTheme-buttonTinted20: @accent-color !important;
+      --newRedditTheme-buttonTinted50: @accent-color !important;
+      --newRedditTheme-buttonTinted80: @accent-color !important;
+      --newRedditTheme-canvas: @black !important;
+      --newRedditTheme-checkbox: @fg !important;
+      --newRedditTheme-errorText: @red !important;
+      --newRedditTheme-field: @bg !important;
+      --newRedditTheme-fieldFade: @bg0_h !important;
+      --newRedditTheme-flair: @accent-color !important;
+
+      /* controls menu, link, and other similar highlights. very important */
+      --newRedditTheme-highlight: @bg !important;
+
+      --newRedditTheme-inactive: @bg1 !important;
+      --newRedditTheme-lightText: @fg !important;
+      --newRedditTheme-lightTextAlpha75: @fg2 !important;
+      --newRedditTheme-line: fadeout(@bg2, 30%) !important;
+      --newRedditTheme-lineShaded80: fadeout(@bg2, 30%) !important;
+      --newRedditTheme-lineShaded90: fadeout(@bg2, 30%) !important;
+      --newRedditTheme-lineShadedNinety: fadeout(@bg2, 30%) !important;
+
+      /* links */
+      --newRedditTheme-linkText: @accent-color !important;
+      --newRedditTheme-linkTextAlpha80: @accent-color !important;
+      --newRedditTheme-linkTextShaded80: @accent-color !important;
+      --newRedditTheme-linkTextTinted80: @accent-color !important;
+      --newRedditTheme-linkTextWithBody: @accent-color !important;
+
+      /* menus */
+      --newRedditTheme-menu: @bg0_h !important;
+      --newRedditTheme-menuActiveText: @fg !important;
+      --newRedditTheme-menuButtonBackground-active: @accent-color !important;
+      --newRedditTheme-menuButtonBackground-focus: @bg !important;
+      --newRedditTheme-menuButtonBackground-hover: @bg !important;
+      --newRedditTheme-menuInactiveText: @fg !important;
+
+      --newRedditTheme-metaText: @fg2 !important;
+      --newRedditTheme-metaTextAlpha50: fadeout(@black, 20%) !important;
+      --newRedditTheme-metaTextShaded80: @fg2 !important;
+      --newRedditTheme-monospaceColor: @accent-color !important;
+      --newRedditTheme-navBar-activeLink: @fg !important;
+      --newRedditTheme-navBar-activeSubmenuCaret: @fg !important;
+      --newRedditTheme-navBar-activeSubmenuLink: @fg !important;
+      --newRedditTheme-navBar-backgroundColor: @bg0_h !important;
+      --newRedditTheme-navBar-hoverLink: @fg !important;
+      --newRedditTheme-navBar-inactiveLink: @fg !important;
+      --newRedditTheme-navBar-inactiveSubmenuCaret: @fg !important;
+      --newRedditTheme-navBar-inactiveSubmenuLink: @fg !important;
+      --newRedditTheme-navBar-submenuBackgroundColor: @bg0_h !important;
+      --newRedditTheme-navIcon: @fg !important;
+      --newRedditTheme-navIconFaded10: fadeout(@black, 20%) !important;
+      --newRedditTheme-nsfw: @red !important;
+      --newRedditTheme-nsfwBlocking-bgcolor: @black !important;
+      --newRedditTheme-nsfwBlocking-color: @fg !important;
+      --newRedditTheme-nsfwBlocking-contentTitleBgColor: @bg !important;
+      --newRedditTheme-nsfwBlocking-mainCtaBgColor: @bg0_h !important;
+      --newRedditTheme-pageHeader: @bg1 !important;
+      --newRedditTheme-placeholder: @bg2 !important;
+      --newRedditTheme-post: @bg0_h !important;
+      --newRedditTheme-postError: @red !important;
+      --newRedditTheme-postFlairText: @fg !important;
+      --newRedditTheme-postIcon: @accent-color !important;
+      --newRedditTheme-postLine: fadeout(@bg2, 30%) !important;
+      --newRedditTheme-postLineShaded80: fadeout(@bg2, 30%) !important;
+      --newRedditTheme-postLineShaded90: fadeout(@bg2, 30%) !important;
+      --newRedditTheme-postTinted20: @bg !important;
+      --newRedditTheme-postTransparent20: fadeout(@black, 20%) !important;
+      --newRedditTheme-primaryButtonShadedEighty: @bg2 !important;
+      --newRedditTheme-primaryButtonTintedEighty: @bg3 !important;
+      --newRedditTheme-primaryButtonTintedFifty: @bg2 !important;
+      --newRedditTheme-primaryButtonTintedSixty: @bg2 !important;
+      --newRedditTheme-quarantine: @yellow !important;
+      --newRedditTheme-report: @bg !important;
+      --newRedditTheme-search-syntaxHighlightBackgroundColor: @accent-color !important;
+      --newRedditTheme-search-syntaxHighlightColor: @bg !important;
+      --newRedditTheme-titleText: @fg !important;
+      --newRedditTheme-upsell-appleIcon: @fg4 !important;
+      --newRedditTheme-upsell-ssoButtonBorderColor: @fg !important;
+      --newRedditTheme-upsell-ssoButtonTextColor: @fg !important;
+      --newRedditTheme-voteText-base: @fg2 !important;
+      --newRedditTheme-voteText-downvote: @blue !important;
+      --newRedditTheme-voteText-downvoteShaded80: @blue !important;
+      --newRedditTheme-voteText-downvoteTinted80: @blue !important;
+      --newRedditTheme-voteText-upvote: @red !important;
+      --newRedditTheme-voteText-upvoteShaded80: @red !important;
+      --newRedditTheme-voteText-upvoteTinted80: @red !important;
+      --newRedditTheme-widgetColors-appleIcon: @fg4 !important;
+      --newRedditTheme-widgetColors-lineColor: fadeout(
+        @bg2,
+        30%
+      ) !important;
+      --newRedditTheme-widgetColors-sidebarWidgetBackgroundColor: @bg0_h !important;
+      --newRedditTheme-widgetColors-sidebarWidgetBorderColor: fadeout(
+        @bg2,
+        30%
+      ) !important;
+      --newRedditTheme-widgetColors-sidebarWidgetHeaderColor: @black !important;
+      --newRedditTheme-widgetColors-sidebarWidgetHeaderColorAlpha60: fadeout(
+        @black,
+        20%
+      ) !important;
+      --newRedditTheme-widgetColors-sidebarWidgetTextColor: @fg !important;
+      --newRedditTheme-widgetColors-sidebarWidgetTextColorShaded80: @fg2 !important;
+      --newRedditTheme-widgetColors-sidebarWidgetTitleColor: @fg !important;
+      --tw-bg-opacity: @black !important;
+      --vds-video-bg-color: @black !important;
+    }
+
+    /* reddit chat variables */
+    :root {
+      --activity-button-chatFilterColor: @bg1 !important;
+      --activity-button-newChatFilter-activeBg: @accent-color !important;
+      --activity-button-newChatFilter-activeText: @bg !important;
+      --activity-button-newChatFilter-defaultBorder: @bg2 !important;
+      --activity-button-newChatFilter-defaultText: @fg !important;
+      --activity-button-primary: @accent-color !important;
+      --activity-button-secondary: @fg !important;
+      --activity-buttonPrimary-color: @accent-color !important;
+      --activity-buttonSecondary-active: @accent-color !important;
+      --activity-checkbox-checked: @accent-color !important;
+      --activity-checkbox-checkmark: @fg !important;
+      --activity-checkbox-unchecked: @bg !important;
+      --activity-checkbox-uncheckedBorder: @bg2 !important;
+      --activity-icon-active: @accent-color !important;
+      --activity-icon-contrast: @bg2 !important;
+      --activity-icon-default: @fg2 !important;
+      --activity-icon-disable: @bg3 !important;
+      --activity-icon-hover: @bg3 !important;
+      --activity-icon-nsfw-bg: @bg !important;
+      --activity-icon-nsfw-text: @fg !important;
+      --activity-icon-subIcon-backgroundColor: @fg !important;
+      --activity-icon-toaster: @black !important;
+      --activity-input-background: fadeout(@black, 20%) !important;
+      --activity-input-border: @bg2 !important;
+      --activity-input-channelRename: @fg2 !important;
+      --activity-input-color: @fg2 !important;
+      --activity-input-error: @red !important;
+      --activity-input-focusBg: @green !important;
+      --activity-input-focusColor: @fg !important;
+      --activity-input-ownerBg: @bg1 !important;
+      --activity-link-hoverText: @red !important;
+      --activity-link-staticText: @accent-color !important;
+      --activity-link-staticUnderline: @accent-color !important;
+      --activity-minimizedPortal-backgroundColor-unreadFinal: @bg0_h !important;
+      --activity-minimizedPortal-backgroundColor-unreadInitial: @accent-color !important;
+      --activity-minimizedPortal-color-unreadFinal: @fg !important;
+      --activity-minimizedPortal-color-unreadInitial: @fg !important;
+      --activity-send-disable: @bg1 !important;
+      --activity-send-hover: @accent-color !important;
+      --activity-text-active: @accent-color !important;
+      --activity-text-fade: @fg2 !important;
+      --activity-text-highlight: @fg !important;
+      --activity-text-light: @fg2 !important;
+      --activity-text-meta: @fg2 !important;
+      --activity-text-regular: @fg !important;
+      --activity-text-success: @green !important;
+      --activity-text-tutorial: @rosewater !important;
+      --activity-text-warning: @red !important;
+      --addReaction-backgroundColor: @bg1 !important;
+      --addReaction-iconFill: @bg2 !important;
+      --boxShadow: fadeout(@black, 20%) !important;
+      --bubble-border: fadeout(@bg2, 30%) !important;
+      --bubble-channelsFilter-background: @black !important;
+      --bubble-channelsFilter-selected: @fg4 !important;
+      --bubble-color: @fg !important;
+      --bubble-link-color: @accent-color !important;
+      --bubbleActions-hover: @bg1 !important;
+      --editName: @bg2 !important;
+      --layout-body: @bg0_h !important;
+      --layout-colsBorder: fadeout(@bg2, 30%) !important;
+      --layout-controlsBorder: fadeout(@bg2, 30%) !important;
+      --layout-dropdown-border: fadeout(@bg2, 30%) !important;
+      --layout-header-counterBg: @red !important;
+      --layout-header-counterText: @fg !important;
+      --layout-overlayBackground: fadeout(@black, 20%) !important;
+      --layout-overlayReportFlow: fadeout(@black, 20%) !important;
+      --layout-scrollbar: @fg !important;
+      --layout-scrollbarHover: @accent-color !important;
+      --layout-timeStamp-tooltip-background: @bg1 !important;
+      --message-list-item-button: @bg2 !important;
+      --message-list-item-onlineIndicator: @green !important;
+      --message-list-item-ownerBg: @bg2 !important;
+      --message-list-item-richItem: @fg4 !important;
+      --message-list-item-richItemBorder: fadeout(@bg2, 30%) !important;
+      --message-list-item-white: @fg !important;
+      --modal-buttonsBackground: @fg !important;
+      --modal-primaryButtonWarning: @red !important;
+      --modal-secondaryButton: @fg !important;
+      --newChat-inviteLink-borderColor: fadeout(@bg2, 30%) !important;
+      --overlay-backgroundColor: @bg0_h !important;
+      --overlay-headerColor: @fg !important;
+      --overlay-inputBackground: @black !important;
+      --overlay-searchBarBackground: @bg0_h !important;
+      --prompt-tooltip-background: @accent-color !important;
+      --searchBar-backgroundColor: @bg0_h !important;
+      --settings-color: @fg2 !important;
+      --settings-dropdownItemHoverBackground: @black !important;
+      --settings-panelBackground: @black !important;
+      --settings-panelItemHoverBackground: @bg1 !important;
+      --settings-panelItemSelectedBackground: @bg2 !important;
+      --sidebar-background: fadeout(@bg2, 30%) !important;
+      --sidebar-basic-background-active: @accent-color !important;
+      --sidebar-basic-background-hover: @bg0_h !important;
+      --sidebar-footer-background: @black !important;
+      --sidebar-item-active: @bg2 !important;
+      --sidebar-item-hover: @bg1 !important;
+      --sidebar-item-selected: @bg3 !important;
+      --sidebar-item-text-active: @fg !important;
+      --sidebar-subreddit-background-active: @accent-color !important;
+      --sidebar-subreddit-background-hover: @bg2 !important;
+      --sidebar-text-divider: @bg2 !important;
+      --skeleton-field: @bg3 !important;
+      --skeleton-inactive: @bg1 !important;
+      --subreddit-iconBg: @accent-color !important;
+      --toast-error: @red !important;
+      --toast-pending: @black !important;
+      --toast-success: @green !important;
+      --uploads-progress-background: @fg2 !important;
+      --uploads-progress-bar: @accent-color !important;
+      --videoModal-button-background: @fg !important;
+      --videoModal-button-color: @bg0_h !important;
+    }
+
+    /* site background */
+    div.ListingLayout-backgroundContainer::before {
+      background: @bg !important;
+    }
+
+    /* PROFILE MENU */
+
+    /* karma count */
+    span#email-collection-tooltip-id > :nth-child(2) > :nth-child(2) > span {
+      color: @fg2 !important;
+    }
+
+    /* profile button karma icon */
+    i.icon-karma_fill {
+      color: @red !important;
+    }
+
+    /* menu headers */
+    div[role="menu"] > div > div > span > span {
+      color: @fg2 !important;
+    }
+
+    /* switches, should also apply sitewide */
+    button[role="switch"][aria-checked="false"] {
+      background: @bg1 !important;
+    }
+
+    button[role="switch"] > div {
+      background: @fg !important;
+    }
+
+    /* online status */
+    ._2dn5Ncenn0BSD4tCSmxQhA {
+      fill: @green !important;
+    }
+
+    ._3SlBAJb2MbUHwgBZFH8eL7 {
+      fill: @bg !important;
+    }
+
+    /* PROFILE PAGE */
+
+    /* create avatar button */
+    button._3F1tNW0P4Ff182mO_CefIg {
+      background: linear-gradient(90deg, @red, @peach) !important;
+      color: @bg !important;
+    }
+
+    button._3F1tNW0P4Ff182mO_CefIg > i {
+      color: @bg !important;
+    }
+
+    /* cake day and followers icon */
+    i.icon-cake_fill,
+    i.icon-user_fill {
+      color: @accent-color !important;
+    }
+
+    /* add social links button readability tweak */
+    div._3hew1NnzwygOKDNQDKp6R4,
+    div._3hew1NnzwygOKDNQDKp6R4 > i,
+    li._3hew1NnzwygOKDNQDKp6R4 {
+      color: @bg !important;
+    }
+
+    /* profile moderation and user settings page */
+    div._1VP69d9lk-Wk9zokOaylL {
+      --background: @bg !important;
+      --canvas: @bg !important;
+    }
+
+    /* Beta Badge */
+    span._2KFJx8Dhh1o1u0Xb8e7NuD {
+      color: @accent-color !important;
+    }
+
+    /* Delete Account */
+    button.EBd2MhBQlQeZ13YeP0K8a {
+      color: @accent-color !important;
+    }
+
+    /* Delete Account Icon */
+    svg._1Fa4RPHlhrfUZuNaXK2-eP > path {
+      fill: @accent-color !important;
+    }
+
+    /* blocked, muted input */
+    input._1Vnaj3fBuYrmHKEPQD_zWW {
+      background-color: @bg !important;
+    }
+
+    /* fixes profile posts not being themed */
+    div.scrollerItem > div,
+    div[data-testid="post-container"],
+    div[style="background:#1A1A1B"],
+    div._2otRz3OtuWajw1RleFDJ5P {
+      background: @bg0_h !important;
+    }
+
+    /* NFT AVATAR VIEWER */
+
+    /* modal background */
+    div._productDetails_7kbcu_53 {
+      background: @bg0_h !important;
+      color: @fg !important;
+    }
+
+    /* Tag Color */
+    .RESUserTagImage::after {
+      color: @accent-color;
+    }
+
+    /* mint status */
+    div._mintStatus_7kbcu_264 {
+      color: @accent-color !important;
+    }
+
+    /* carousel background */
+    div._carousel_7kbcu_45 {
+      background: linear-gradient(243.37deg, @bg 16.42%, @blue 100%);
+    }
+
+    /* nft card back */
+    div._card_1ooes_1 {
+      background: @blue !important;
+    }
+
+    ol._container_1t62i_1 {
+      border-color: @bg !important;
+    }
+
+    ol._container_1t62i_1 > li {
+      border-color: @bg !important;
+    }
+
+    ol._container_1t62i_1 > li > div {
+      color: @bg !important;
+    }
+
+    div.MuiMobileStepper-dot {
+      background: @bg1 !important;
+    }
+
+    div.MuiMobileStepper-dotActive {
+      background: @accent-color !important;
+    }
+
+    div._scrollContainer_7kbcu_104 > div > h3,
+    div._cardAuthor_7kbcu_79 {
+      color: @fg2 !important;
+    }
+
+    div._container_oikih_1 {
+      background: @black !important;
+      border-color: @bg2 !important;
+    }
+
+    /* external links */
+    a._pill_7kbcu_280 {
+      background: @black !important;
+      color: @fg !important;
+    }
+
+    /* shop for avatars button */
+    button._shopForMoreButton_7kbcu_125 {
+      background: linear-gradient(90deg, @red, @peach) !important;
+      color: @bg !important;
+    }
+
+    /* AVATAR CREATOR */
+    div._wrapper_1upjl_7 {
+      background: @bg !important;
+      color: @fg !important;
+    }
+
+    /* SITE HEADER */
+
+    /* reddit logo */
+    a[aria-label="Home"] > svg > g > circle {
+      fill: @accent-color !important;
+    }
+
+    a[aria-label="Home"] > svg:first-child > g > path {
+      fill: @bg !important;
+    }
+
+    a[aria-label="Home"] > svg:nth-child(2) > g > path {
+      fill: @fg !important;
+    }
+
+    /* Post title from notification */
+    h1._eYtD2XCVieq6emjKBH3m {
+      color: @fg !important;
+    }
+
+    /* notification icon */
+    button[aria-label="Open notifications inbox"] > div > span {
+      background: @accent-color !important;
+      color: @bg0_h !important;
+    }
+
+    /* advertise button */
+    #change-username-tooltip-id > span._2I12Htze2UzJmmfnrgYJOn > a {
+      background: @bg1 !important;
+      color: @fg !important;
+    }
+
+    #change-username-tooltip-id > span._2I12Htze2UzJmmfnrgYJOn > a > i {
+      color: @fg !important;
+    }
+
+    /* reddit now notification */
+    a[href="/now"] > div {
+      background: @accent-color !important;
+    }
+
+    /* search scope pill text */
+    div[data-testid="search-scope-pill-text"] {
+      color: @fg !important;
+    }
+
+    /* search popup title */
+    div[class*="_2SdHzo12ISmrC8H86TgSCp"][class*="_1QVrieUoti9cxiQSRw314E"][class*="uWdXen_41bh0iwLrgzFkc"] {
+      --posttitletextcolor: @fg !important;
+    }
+
+    /* safe search toggle */
+    button#safe-search-toggle[aria-checked="true"] {
+      background: @accent-color !important;
+    }
+
+    /* NAVIGATION SIDEBAR */
+
+    /* close icon */
+    i.icon-close {
+      color: @fg2 !important;
+    }
+
+    /* item color */
+    a[role="menuitem"] {
+      color: @fg !important;
+    }
+
+    /* navigation sidebar header color */
+    div[role="menu"] > div[role="heading"] {
+      color: @fg2 !important;
+    }
+
+    a[role="menuitem"]:hover {
+      background: @bg1 !important;
+    }
+
+    /* favorites */
+    i.icon-star_fill {
+      color: @accent-color !important;
+    }
+
+    i.icon-star {
+      color: @fg2 !important;
+    }
+
+    /* RIGHT FRONTPAGE SIDEBAR */
+
+    /* reddit premium icon */
+    i.icon-premium_fill {
+      color: @accent-color !important;
+    }
+
+    /* reddit premium try now button */
+    button._10BQ7pjWbeYP63SAPNS8Ts.q_unSaY23rpdd3lDvGZ- {
+      background: @accent-color !important;
+      color: @bg !important;
+    }
+
+    /* recent posts thumbnail borders */
+    div._3fWuhJ6bVet7XJT5A0mZM2 > div > div > div {
+      border-color: @fg2 !important;
+    }
+
+    /* POSTS */
+
+    /* post background for card style */
+    div[data-adclicklocation="background"] {
+      background: @bg !important;
+    }
+
+    /* post options (save, comment, etc.) */
+    div._3-miAEojrCvx_4FQ8x3P-s,
+    i.icon-comment,
+    i.icon-share,
+    i.icon-save,
+    i.icon-expand,
+    i.icon-collapse,
+    i.icon-text_post,
+    i.icon-image_post,
+    i.icon-media_gallery,
+    i.icon-video_post,
+    i.icon-gif_post,
+    i.icon-embed,
+    i.icon-external_link,
+    i.icon-poll_post {
+      color: @fg2 !important;
+    }
+
+    /* post title color */
+    div[data-adclicklocation="title"] > div > a > div > h3,
+    div[data-adclicklocation="title"]
+      > div:first-child
+      > div:first-child
+      > h1:first-child {
+      color: @fg !important;
+    }
+
+    /*
+         *  post op color and
+         *  post date color
+         */
+    div[data-adclicklocation="top_bar"] > span,
+    a[data-testid="post_author_link"] {
+      color: @fg2 !important;
+    }
+
+    /* nsfw flair */
+    span._1wzhGvvafQFOWAyA157okr {
+      border-color: @red !important;
+      color: @red !important;
+    }
+
+    /* pinned post icon */
+    i.icon-pin_fill {
+      color: @green !important;
+    }
+
+    /* give award icon */
+    i.icon-award {
+      color: @fg2 !important;
+    }
+
+    /* locked post icon */
+    i.icon-archived_fill,
+    i.icon-lock_fill {
+      color: @yellow !important;
+    }
+
+    /* post button divider */
+    div[data-click-id="body"] > div:nth-child(3) > div:nth-child(3) {
+      border-color: @bg2 !important;
+    }
+
+    /* UPVOTES/DOWNVOTES */
+
+    /* upvote/downvote background */
+    div.Post,
+    div[data-click-id="media"] {
+      background: @bg0_h !important;
+      fill: @bg0_h !important;
+    }
+
+    /* inactive vote text color */
+    div[id^="vote-arrows"] > div {
+      color: @fg2 !important;
+    }
+
+    /* active upvote color */
+    i.icon-upvote_fill {
+      color: @red !important;
+    }
+
+    button[aria-label="upvote"][aria-pressed="false"] > span:hover > i {
+      color: @red !important;
+    }
+
+    /* active upvote text color */
+    button[aria-label="upvote"][aria-pressed="true"] ~ div {
+      color: @red !important;
+    }
+
+    /* hover background for both upvotes and downvotes */
+    button[aria-label="upvote"][aria-label="downvote"] > span:hover {
+      background: @bg1 !important;
+    }
+
+    /* active downvote color */
+    .icon-downvote_fill {
+      color: @blue !important;
+    }
+
+    /* active downvote text color */
+    button[aria-label="downvote"][aria-pressed="true"] ~ div {
+      color: @blue !important;
+    }
+
+    button[aria-label="downvote"][aria-pressed="false"] > span:hover > i {
+      color: @blue !important;
+    }
+
+    /* REPORT MODAL */
+
+    a.o1ov2mzLxTFAFP-O4Uv8I {
+      color: @accent-color !important;
+    }
+
+    button._1lDGFVGU9k2mi-4kjU95Rp {
+      color: @bg !important;
+    }
+
+    /* SUBREDDIT PAGES */
+    a[role="button"][target="_blank"] {
+      background: @fg !important;
+      color: @bg !important;
+    }
+
+    /* radio buttons (flair selector, etc.) */
+    div[role="radio"]:hover,
+    div[role="radio"]:focus {
+      background: @accent-color !important;
+    }
+
+    div[role="radio"] > svg,
+    div[role="radio"] > svg:active {
+      fill: @fg !important;
+    }
+
+    /* checkboxes */
+    button[role="checkbox"] {
+      fill: @accent-color !important;
+    }
+
+    /* SUBREDDIT RIGHT SIDEBAR (some styles carry over from the homepage right sidebar section) */
+
+    /* header background */
+    ._ZhON3a3vplThB8NFwuJn {
+      background: @black !important;
+      color: @fg !important;
+    }
+
+    /* subreddit image background */
+    img[alt="Subreddit Icon"][role="presentation"] {
+      background: @accent-color !important;
+    }
+
+    /* border between uela */
+    ._1KrMye71CT332tKKKUWAj6:not(:last-of-type) {
+      border-bottom-color: @bg1;
+    }
+
+    /* follower color */
+    .bg-neutral-background {
+      color: @fg !important;
+    }
+
+    /* default subreddit icon */
+    i.icon-community_fill {
+      color: @accent-color !important;
+    }
+
+    /* online users */
+    div._21RLQh5PvUhC6vOKoFeHUP::before {
+      color: @green !important;
+    }
+
+    /* POST VIEWER */
+
+    /* spoiler tags */
+    ._2v4IIjPhKL0PDaWaWtjJ1E {
+      background: @bg1 !important;
+    }
+
+    /* mod comment tag */
+    span[id^="CommentTopMeta--Mod"] {
+      color: @green !important;
+    }
+
+    /* op comment tag */
+    span[id^="CommentTopMeta--OP"] {
+      color: @blue !important;
+    }
+
+    /* post overlay if you have "open in new tab" disabled */
+    div#overlayScrollContainer > div {
+      background: @black !important;
+    }
+
+    /* fixes comment section background not working when "open in new tab is disabled" */
+    div._2M2wOqmeoPVvcSsJ6Po9-V._3287nL7j7epK9JmDC3N1VR {
+      background: @bg0_h !important;
+    }
+
+    /* shade applied to background when clicking on a post with "open in new tab" disabled */
+    div._2DJXORCrmcNpPTSq0LqL6i,
+    div._1DK52RbaamLOWw5UPaht_S {
+      background: fadeout(@black, 20%) !important;
+    }
+
+    /* gold award gradient */
+    div.TmlaIdEplCzZ0F1aRGYQh[role="presentation"] {
+      background: linear-gradient(
+        188deg,
+        #f9e2af1f 1.7%,
+        #f9e2af00 46%,
+        rgba(0, 0, 0, 0)
+      ) !important;
+    }
+
+    /* image gallery next/previous buttons */
+    a[title="Next"] > i,
+    a[title="Previous"] > i {
+      background: @bg1 !important;
+    }
+
+    /* image gallery image count */
+    div._61i6grM3um1yuw4GrN97P {
+      background: fadeout(@black, 20%) !important;
+      color: @fg !important;
+    }
+
+    /* comment search bar */
+    input#comment_search-bar {
+      background: @bg !important;
+    }
+
+    /* tab bar below banner */
+    ._1gVVmSnHZpkUgVShsn7-ua {
+      background: @bg0_h !important;
+    }
+
+    /* MULTIREDDITS/CUSTOM FEEDS */
+
+    /* delete custom feed button */
+    .bX6SqXfzfxpv4GQbuIYVZ {
+      color: @red !important;
+    }
+
+    /* TOOLTIPS */
+    div.HQ2VJViRjokXpRbJzPvvc {
+      background: @bg0_h !important;
+      color: @fg !important;
+    }
+
+    div.HQ2VJViRjokXpRbJzPvvc::after {
+      border-top-color: @bg0_h !important;
+    }
+
+    /* Recap Reddit Logo */
+    .snoo-cls-1,
+    .snoo-cls-2,
+    .snoo-cls-3,
+    .snoo-cls-6,
+    .snoo-cls-8,
+    .snoo-cls-9 {
+      fill: @bg;
+    }
+
+    .snoo-cls-4,
+    .snoo-cls-5,
+    .snoo-cls-7,
+    .snoo-cls-10,
+    .snoo-cls-11 {
+      fill: @accent-color;
+    }
+  }
+}
+
+/* prettier-ignore */
+@catppuccin: {
+  @latte:     { @rosewater: #dc8a78; @flamingo: #dd7878; @purple: #8f3f71; @purple0: #b16286; @red: #d20f39; @maroon: #e64553; @peach: #fe640b; @yellow: #df8e1d; @green: #40a02b; @teal: #179299; @sky: #04a5e5; @blue0: #458588; @blue: #076678; @lavender: #7287fd; @fg: #3c3836; @fg2: #504945; @fg3: #665c54; @fg4: #7c6f64; @bg3: #bdae93; @bg2: #d5c4a1; @bg1: #ebdbb2; @bg: #fbf1c7; @bg0_h: #f9f5d7; @black: #111111; };
+  @frappe:    { @rosewater: #f2d5cf; @flamingo: #eebebe; @purple: #8f3f71; @purple0: #b16286; @red: #e78284; @maroon: #ea999c; @peach: #ef9f76; @yellow: #e5c890; @green: #a6d189; @teal: #81c8be; @sky: #99d1db; @blue0: #458588; @blue: #076678; @lavender: #babbf1; @fg: #3c3836; @fg2: #504945; @fg3: #665c54; @fg4: #7c6f64; @bg3: #bdae93; @bg2: #d5c4a1; @bg1: #ebdbb2; @bg: #fbf1c7; @bg0_h: #f9f5d7; @black: #111111; };
+  @macchiato: { @rosewater: #f4dbd6; @flamingo: #f0c6c6; @purple: #d3869b; @purple0: #b16286; @red: #ed8796; @maroon: #ee99a0; @peach: #f5a97f; @yellow: #eed49f; @green: #a6da95; @teal: #8bd5ca; @sky: #91d7e3; @blue0: #458588; @blue: #83a598; @lavender: #b7bdf8; @fg: #ebdbb2; @fg2: #d5c4a1; @fg3: #bdae93; @fg4: #a89984; @bg3: #665c54; @bg2: #504945; @bg1: #3c383c; @bg: #282828; @bg0_h: #1d2021; @black: #111111; };
+  @mocha:     { @rosewater: #f5e0dc; @flamingo: #f2cdcd; @purple: #d3869b; @purple0: #b16286; @red: #f38ba8; @maroon: #eba0ac; @peach: #fab387; @yellow: #f9e2af; @green: #a6e3a1; @teal: #94e2d5; @sky: #89dceb; @blue0: #458588; @blue: #83a598; @lavender: #b4befe; @fg: #ebdbb2; @fg2: #d5c4a1; @fg3: #bdae93; @fg4: #a89984; @bg3: #665c54; @bg2: #504945; @bg1: #3c383c; @bg: #282828; @bg0_h: #1d2021; @black: #111111; };
+}
+
+// vim:ft=less
